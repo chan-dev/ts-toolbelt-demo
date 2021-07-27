@@ -1,5 +1,5 @@
 import { Function } from 'ts-toolbelt';
-import { Falsy, Primitive } from "utility-types";
+import { Falsy, Primitive, OptionalKeys, RequiredKeys, Optional, PickByValue } from "utility-types";
 
 
 type UserLoggedIn = Function.Promisify<(user: string, password: string) => boolean>;
@@ -24,3 +24,25 @@ const aString: Primitive = "a random string";
 const falsyValue1: Falsy = null;
 const falsyValue2: Falsy = undefined;
 const falsyValue3: Falsy = "";
+
+// Object types
+interface PersonalInfo {
+  id: string;
+  name: string;
+  email: string;
+  company?: string;
+  age?: number;
+  height?: number;
+  weight?: number;
+}
+
+// Object types
+
+// Return Union type keys
+type OptionalInfoKeys = OptionalKeys<PersonalInfo>;
+type RequiredInfoKeys = RequiredKeys<PersonalInfo>;
+type StringInfoKeys = PickByValue<PersonalInfo, string>;
+type NumberInfoKeys = PickByValue<PersonalInfo, number>;
+
+type RequiredStringInfoKeys = RequiredKeys<StringInfoKeys>;
+type OptionalStringInfoKeys = OptionalKeys<StringInfoKeys>;
