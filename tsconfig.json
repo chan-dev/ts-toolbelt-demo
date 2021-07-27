@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
-    "target": "esnext"
+    "target": "esnext",
+    // highly recommended (required by few utilities)
+    "strictNullChecks": true,
+    // this is optional, but enable whenever possible
+    "strict": true,
+    // this is the lowest supported standard library
+    "lib": [
+      "es2015"
+    ]
   }
 }
